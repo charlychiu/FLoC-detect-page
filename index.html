@@ -16,13 +16,12 @@
         if ('interestCohort' in document) {
             document.getElementById("status").innerText = "FLoC is actived.";
 
-            try {
-                cohort = await document.interestCohort();
+            document.interestCohort().then(function (cohort) {
                 document.getElementById("id").innerText = `FLoC id: ${cohort.id}`;
                 document.getElementById("version").innerText = `FLoC version: ${cohort.version}`;
-            } catch {
+            }).catch(function (e) {
                 document.getElementById("id").innerText = "FLoC data not available yet.";
-            }
+            })
 
         } else {
             document.getElementById("status").innerText = "FLoC is not activated."
