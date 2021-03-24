@@ -2,14 +2,45 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FLoC API detector</title>
+    <meta name="description" content="FLoC detector page for at least Chrome 89.">
+    <meta name="author" content="charlychiu">
+    <meta name="copyright" content="charlychiu">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQNXCT11V4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-QQNXCT11V4');
+    </script>
+    <style>
+        html,
+        body {
+            background-color: #222D40;
+            color: #F6FBFF;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 200;
+            height: 100vh;
+            margin: 0;
+        }
+
+        a {
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 
-<body>
-
-    <p id="status"></p>
-    <p id="id"></p>
-    <p id="version"></p>
+<body style="text-align: center;">
+    <h1>FLoC API detector</h1>
+    <p>Official Doc <a href="https://github.com/WICG/floc">here</a>!</p>
+    <h3 id="status"></h3>
+    <h4 id="id"></h4>
+    <h4 id="version"></h4>
 
     <script>
 
@@ -21,6 +52,7 @@
                 document.getElementById("version").innerText = `FLoC version: ${cohort.version}`;
             }).catch(function (e) {
                 document.getElementById("id").innerText = "FLoC data not available yet.";
+                document.getElementById("version").innerText = `Error msg: ${e}`;
             })
 
         } else {
