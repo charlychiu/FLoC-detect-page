@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FLoC API detector</title>
+</head>
+
+<body>
+
+    <p id="status"></p>
+    <p id="id"></p>
+    <p id="version"></p>
+
+    <script>
+
+        if ('interestCohort' in document) {
+            document.getElementById("status").innerText = "FLoC is actived.";
+
+            try {
+                cohort = await document.interestCohort();
+                document.getElementById("id").innerText = `FLoC id: ${cohort.id}`;
+                document.getElementById("version").innerText = `FLoC version: ${cohort.version}`;
+            } catch {
+                document.getElementById("id").innerText = "FLoC data not available yet.";
+            }
+
+        } else {
+            document.getElementById("status").innerText = "FLoC is not activated."
+        }
+    </script>
+
+</body>
+
+</html>
